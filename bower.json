@@ -1,6 +1,6 @@
 {
   "name": "granum-layout-arc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
     "Geoff M. Granum <geoff@granum.biz>"
   ],
@@ -9,11 +9,12 @@
     "web-component",
     "web-components",
     "polymer",
-    "seed"
+    "granum",
+    "layout"
   ],
   "main": "granum-layout-arc.html",
   "license": "MIT",
-  "homepage": "https://github.com/ggranum/granum-layout-arc",
+  "homepage": "https://ggranum.github.com/granum-layout-arc",
   "ignore": [
     "/.*",
     "/tests/"

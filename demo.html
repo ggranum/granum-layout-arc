@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--
     @license
-    Copyright (c) 2014 Geoff M. Granum. All rights reserved.
+    Copyright (c) 2014 Geoff M. Granum. Released under the [MIT license](http://choosealicense.com/licenses/mit/).
+
 -->
 <html lang="en" class="no-js">
 <head>
@@ -17,13 +18,8 @@
 
     .container {
       width: 80%;
+      height: 500px;
       margin: 50px auto;
-    }
-
-    @media (min-width: 481px) {
-      .container {
-        width: 400px;
-      }
     }
 
     .layout-arc-item {
@@ -37,12 +33,13 @@
   </style>
 
 </head>
-<body unresolved vertical layout>
+<body unresolved >
 
 
 <!--<p>An example of using <code>&lt;granum-layout-arc&gt;</code>:</p>-->
 
-  <div class="container">
+  <div class="container" >
+    <div style="padding-bottom: 3em;">The numbers on a rotary phone. Note the use of arcStart to shift the center line of the circular layout.</div>
     <granum-layout-arc style="width: 400px;height: 400px;" arcStart="210" arcLength="360">
       <div class="layout-arc-item" horizontal layout center><div flex>0</div></div>
       <div class="layout-arc-item" horizontal layout center><div flex>9</div></div>
@@ -54,6 +51,20 @@
       <div class="layout-arc-item" horizontal layout center><div flex>3</div></div>
       <div class="layout-arc-item" horizontal layout center><div flex>2</div></div>
       <div class="layout-arc-item" horizontal layout center><div flex>1</div></div>
+    </granum-layout-arc>
+
+  </div>
+
+<div class="container">
+    <div style="padding-bottom: 3em;">A pretty rainbow.</div>
+    <granum-layout-arc style="width: 400px;height: 400px;" arcLength="180">
+      <div class="layout-arc-item" style="background-color: red">&nbsp;</div>
+      <div class="layout-arc-item" style="background-color: orange">&nbsp;</div>
+      <div class="layout-arc-item" style="background-color: yellow">&nbsp;</div>
+      <div class="layout-arc-item" style="background-color: green">&nbsp;</div>
+      <div class="layout-arc-item" style="background-color: blue">&nbsp;</div>
+      <div class="layout-arc-item" style="background-color: purple">&nbsp;</div>
+      <div class="layout-arc-item" style="background-color: violet">&nbsp;</div>
     </granum-layout-arc>
 
   </div>
