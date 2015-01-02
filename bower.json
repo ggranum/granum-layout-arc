@@ -1,0 +1,7 @@
+{
+  "name": "granum-layout-arc#gh-pages",
+  "private": true,
+  "dependencies": {
+    "granum-layout-arc": "ggranum/granum-layout-arc#master"
+  }
+}

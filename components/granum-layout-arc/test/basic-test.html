@@ -1,0 +1,75 @@
+<!--
+    @license
+    Copyright (c) 2014 Geoff M. Granum. Released under the [MIT license](http://choosealicense.com/licenses/mit/).
+
+-->
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>seed-element</title>
+
+  <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../granum-layout-arc.html">
+</head>
+<body>
+
+  <!-- You use the document as a place to set up your fixtures. -->
+  <div class="container">
+    <granum-layout-arc style="width: 400px;height: 500px;" arcStart="210" arcLength="360">
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>0</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>9</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>8</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>7</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>6</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>5</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>4</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>3</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>2</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>1</div>
+      </div>
+    </granum-layout-arc>
+
+  </div>
+
+
+  <script>
+    var myEl = document.querySelector('granum-layout-arc');
+
+    suite('<granum-layout-arc>', function() {
+
+      test('Has the arcLength property', function() {
+        assert.equal(myEl.arcLength, 360);
+      });
+
+      test('Has radius of 1/2 of its smallest dimension', function() {
+        assert.equal(myEl.radius, 200);
+      });
+    });
+  </script>
+
+</body>
+</html>

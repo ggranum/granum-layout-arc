@@ -1,0 +1,37 @@
+{
+  "name": "granum-layout-arc",
+  "authors": [
+    "Geoff M. Granum <geoff@granum.biz>"
+  ],
+  "description": "A container that lays out its content children as an arc of elements.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "granum",
+    "layout"
+  ],
+  "main": "granum-layout-arc.html",
+  "license": "MIT",
+  "homepage": "https://ggranum.github.com/granum-layout-arc",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
+  },
+  "_release": "eeb2551230",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "eeb25512307a9cc6f85b54ce52625153269a176d"
+  },
+  "_source": "git://github.com/ggranum/granum-layout-arc.git",
+  "_target": "master",
+  "_originalSource": "ggranum/granum-layout-arc",
+  "_direct": true
+}
