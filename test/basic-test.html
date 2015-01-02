@@ -18,37 +18,60 @@
   <script src="../../web-component-tester/browser.js"></script>
 
   <!-- Step 1: import the element to test -->
-  <link rel="import" href="../seed-element.html">
+  <link rel="import" href="../granum-layout-arc.html">
 </head>
 <body>
 
   <!-- You use the document as a place to set up your fixtures. -->
-  <seed-element></seed-element>
+  <div class="container">
+    <granum-layout-arc style="width: 400px;height: 500px;" arcStart="210" arcLength="360">
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>0</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>9</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>8</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>7</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>6</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>5</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>4</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>3</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>2</div>
+      </div>
+      <div class="layout-arc-item" horizontal layout center>
+        <div flex>1</div>
+      </div>
+    </granum-layout-arc>
+
+  </div>
+
 
   <script>
-    var myEl = document.querySelector('seed-element');
+    var myEl = document.querySelector('granum-layout-arc');
 
-    suite('<seed-element>', function() {
+    suite('<granum-layout-arc>', function() {
 
-      test('defines the "author" property', function() {
-        assert.equal(myEl.author, 'Dimitri Glazkov');
+      test('Has the arcLength property', function() {
+        assert.equal(myEl.arcLength, 360);
       });
 
-      test('says hello', function() {
-        assert.equal(myEl.sayHello(), 'seed-element says, Hello World!');
-
-        var greetings = myEl.sayHello('greetings Earthlings');
-        assert.equal(greetings, 'seed-element says, greetings Earthlings');
+      test('Has radius of 1/2 of its smallest dimension', function() {
+        assert.equal(myEl.radius, 200);
       });
-
-      test('fires lasers', function(done) {
-        myEl.addEventListener('seed-element-lasers-success', function(event) {
-          assert.equal(event.detail.sound, 'Pew pew pew!');
-          done();
-        });
-        myEl.fireLasers();
-      });
-
     });
   </script>
 

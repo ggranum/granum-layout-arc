@@ -1,19 +1,19 @@
 {
-  "name": "seed-element",
+  "name": "granum-layout-arc",
   "version": "0.0.0",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Geoff M. Granum <geoff@granum.biz>"
   ],
-  "description": "Element providing solution to no problem in particular.",
+  "description": "A container that lays out its content children as an arc of elements.",
   "keywords": [
     "web-component",
     "web-components",
     "polymer",
     "seed"
   ],
-  "main": "seed-element.html",
+  "main": "granum-layout-arc.html",
   "license": "MIT",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/ggranum/granum-layout-arc",
   "ignore": [
     "/.*",
     "/tests/"
