@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+    @license
+    Copyright (c) 2014 Geoff M. Granum. All rights reserved.
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Place elements evenly along an arc.">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <title>granum-layout-arc</title>
+  <script src="../webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="granum-layout-arc.html">
+
+  <style type="text/css">
+
+    .container {
+      width: 80%;
+      margin: 50px auto;
+    }
+
+    @media (min-width: 481px) {
+      .container {
+        width: 400px;
+      }
+    }
+
+    .layout-arc-item {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      text-align: center;
+      background-color: black;
+      color: white;
+    }
+  </style>
+
+</head>
+<body unresolved vertical layout>
+
+
+<!--<p>An example of using <code>&lt;granum-layout-arc&gt;</code>:</p>-->
+
+  <div class="container">
+    <granum-layout-arc style="width: 400px;height: 400px;" arcStart="210" arcLength="360">
+      <div class="layout-arc-item" horizontal layout center><div flex>0</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>9</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>8</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>7</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>6</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>5</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>4</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>3</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>2</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>1</div></div>
+    </granum-layout-arc>
+
+  </div>
+
+</body>
+</html>

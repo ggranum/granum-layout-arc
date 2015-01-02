@@ -1,0 +1,15 @@
+/*
+ * @license
+ * Copyright (c) 2014 Geoff Granum. All rights reserved.
+ */
+
+:host {
+  position: absolute;
+  border-radius: {{radius}}px;
+}
+
+
+polyfill-next-selector { content: ':host > div'; }
+::content > div {
+  position: absolute;
+}

@@ -1,0 +1,130 @@
+<!--
+    @license
+    Copyright (c) 2014 Geoff M. Granum. All rights reserved.
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+
+A container that lays out its content children as an arc of elements, centered about the center point of this element.
+
+Radius of the arc is described by the minimum of 1/2 the offsetWidth or offsetHeight of this element.
+
+arcLength is specified in degrees. A half-circle is 180 degrees, a full circle is 360.
+
+arcStart is also specified in degrees, and refers to the rotation offset. By default (arcStart = 0), a 180 degree arc will display as a half-circle lying
+ above the horizontal axis. For an arcLength of 360 degrees (a full circle), you will probably want to specify a value of -90 for arcStart.
+
+
+The center point of the arc is calculated, and is the center point of this element, also calculated using offset dimensions (offset Width, Height, Top, Left).
+
+
+Elements will be laid out starting from the middle of the arc. For a half circle (arcLength = 180) the first element is added at 90 degrees
+relative to arcStart. Adding a second element will cause a re-balancing, placing elementA at 60 degrees and elementB at 120 degrees.
+Element separation along the arc can be described by the equation (arcLength / (elementCount + 1)). This means the position of the ith element
+is described by element[i] = (arcLength/(elementCount + 1))*i
+
+Some things for the future.
+  - Specify a center point via x,y coords. Trying to create composite arc-based layouts basically sucks without it: either the code in this layout explodes
+   tyring to handle padding, margins and borders, or the code organizing the multiple layouts can't use borders - yuck!
+  - Add 'bunching' elements near a specific point along the arc, or other methods for affecting the position of elements.
+    - Current implementation is a simple "even distribution" model.
+  - Animations. Sufficient to make a realistic looking sundial. Because why not.
+
+
+##### Example
+    <style>
+       .layout-arc-item {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        text-align: center;
+        background-color: black;
+        color: white;
+      }
+    </style>
+
+    <granum-layout-arc style="width: 400px;height: 400px;" arcStart="210" arcLength="360">
+      <div class="layout-arc-item" horizontal layout center><div flex>0</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>9</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>8</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>7</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>6</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>5</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>4</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>3</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>2</div></div>
+      <div class="layout-arc-item" horizontal layout center><div flex>1</div></div>
+    </granum-layout-arc>
+
+@element granum-layout-arc
+@blurb A container that lays out its content children as an arc of elements, centered about the center point of this element.
+@status alpha
+@homepage https://github.com/ggranum/granum-layout-arc
+
+-->
+
+  <polymer-element name="granum-layout-arc">
+    <template>
+      <link rel="stylesheet" href="granum-layout-arc.css">
+      <content></content>
+    </template>
+    <script>
+      (function () {
+        var toRadians = (Math.PI / 180.000);
+        Polymer('granum-layout-arc', {
+
+          radius: undefined,
+          arcStart: undefined,
+          arcLength: undefined,
+          centerPoint: {x: 0, y: 0},
+
+          publish: {
+            arcStart: 0,
+            arcLength: 360
+          },
+
+          observe: {
+            'children': 'childrenChanged'
+          },
+
+          ready: function () {
+            this.radius = Math.min(this.offsetWidth / 2, this.offsetHeight / 2);
+            this.centerPoint = {x: this.offsetLeft - this.offsetWidth / 2, y: this.offsetTop - this.offsetHeight / 2};
+            this.updateChildPositions();
+          },
+
+          updateChildPositions: function () {
+            var arcSep;
+            var count = this.children.length;
+            if (count === 0) {
+              return;
+            }
+            arcSep = this.arcLength / (count + 1); // in degrees
+
+            var positions = [];
+            this.children.array().forEach(function (el, index) {
+              var coords = this.polarToCartesian(this.radius, (index + 1) * arcSep + this.arcStart);
+              el.style.left = (coords.x - el.offsetWidth / 2) + "px";
+              el.style.top = (coords.y - el.offsetHeight / 2) + "px";
+              positions[index] = coords;
+            }, this);
+          },
+
+          polarToCartesian: function (radius, arcPosition) {
+            var theta = toRadians * arcPosition;
+            var xa = -radius * (Math.cos(theta) - 1);
+            var ya = -radius * (Math.sin(theta) - 1);
+
+            return {x: Math.round(xa), y: Math.round(ya), theta: theta};
+          },
+
+          childrenChanged: function () {
+            this.updateChildPositions();
+          }
+
+        });
+
+      })();
+    </script>
+  </polymer-element>
